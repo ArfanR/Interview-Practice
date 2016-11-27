@@ -56,9 +56,36 @@ public class Strings  {
 
 	}
 
+	// Time complexity: O(n)
+	public static void replaceSpace(char[] str, int trueLength) {
+		int spaces = 0;
+		for (int i = 0; i < str.length(); i++) {
+			if (str[i] == ' ') {
+				spaces++;
+			}
+		}
+
+		int newIndex = trueLength + spaces*2;
+		if (trueLength < str.length()) {
+			str[trueLength] = '\0';
+		}
+		for (int i = newLength-1; i >= 0; i--) {
+			if (str[i] == ' ') {
+				str[newIndex-1] = '0';
+				str[newIndex-2] = '2';
+				str[newIndex-3] = '%';
+				newIndex -= 3;
+			}
+			else {
+				str[newIndex-1] = str[i];
+				newIndex--;
+			}
+		}
+	}
+
 	public static void main(String[] args) {
-		System.out.println(Strings.isUniqueChars("abcdef"));
-		System.out.println(Strings.isUniqueChars("aabbccddeeff"));
+		char[] str = "Mr John Smith ";
+		str = replae
 	}
 
 }
