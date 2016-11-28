@@ -1,3 +1,5 @@
+import java.io.*;
+import java.util.*;
 
 public class Strings  {
 
@@ -20,22 +22,9 @@ public class Strings  {
 		return true;
 	}
 
-	// Time complexity: O(n logn)
-	// Sort both strings and check if they are equal
-	public static boolean checkPermutation(String s1, String s2) { 
-		String new_s1 = new String(java.util.Arrays.sort(s1.toCharArray()));
-		String new_s2 = new String(java.util.Arrays.sort(s2.toCharArray()));
-	
-		if (new_s1.length() != new_s2.length()) {
-			return false;
-		}
-
-		return (new_s1.equals(new_s2()));
-	}
-
 	// Time complexity: O(n)
 	// Check if both strings have identical character counts
-	public static boolean checkPermutation2(String s1, String s2) {
+	public static boolean checkPermutation(String s1, String s2) {
 		if (s1.length() != s2.length()) {
 			return false;
 		}
@@ -63,17 +52,17 @@ public class Strings  {
 	// Count white spaces and fill in new char array backward
 	public static void replaceSpace(char[] str, int trueLength) {
 		int spaces = 0;
-		for (int i = 0; i < str.length(); i++) {
+		for (int i = 0; i < str.length; i++) {
 			if (str[i] == ' ') {
 				spaces++;
 			}
 		}
 
 		int newIndex = trueLength + spaces*2;
-		if (trueLength < str.length()) {
+		if (trueLength < str.length) {
 			str[trueLength] = '\0';
 		}
-		for (int i = newLength-1; i >= 0; i--) {
+		for (int i = newIndex-1; i >= 0; i--) {
 			if (str[i] == ' ') {
 				str[newIndex-1] = '0';
 				str[newIndex-2] = '2';
@@ -94,9 +83,9 @@ public class Strings  {
 		int[] char_set = new int[Character.getNumericValue('z') - Character.getNumericValue('a') + 1];
 
 		for (char c : str.toCharArray()) {
-			int val = getCharNumber(c);
+			int val = Character.getNumericValue(c);
 			char_set[val]++;
-			if (char_set[va] % 2 == 1) {
+			if (char_set[val] % 2 == 1) {
 				countOdd++;
 			}
 			else {
@@ -108,12 +97,55 @@ public class Strings  {
 
 	}
 
-	public static void main(String[] args) {
-		System.out.println(Strings.isUniqueChars(""));
-		System.out.println(Strings.isUniqueChars("abc"));
-		System.out.println(Strings.isUniqueChars("abcc"));
+	// Time Complexity: O(n)
+	// Check if strings are one or zero edits away: replacement, insertion or removal
+	public static boolean oneEdit(String s1, String s2) {
+		if (s1.length() == s2.length()) {
+			return oneEditReplace(s1, s2);
+		}
+		else if (s1.length()+1 == s2.length() || s1.length()-1 == s2.length()) {
+			return oneEditInsert(s1, s2);
+		}
+		return false;
+	}
 
+	public static boolean oneEditInsert(String s1, String s2) {
+		int index1 = 0;
+		int index2 = 0;
 		
+		while (index1 < s1.length() && index2 < s2.length()) {
+			if (s1.charAt(index1) != s2.charAt(index2)) {
+				if (index1 != index2) {
+					return false;
+				}
+				index2++;
+			}
+			else {
+				index1++;
+				index2++;
+			}
+		}
+
+		return true;
+	}
+
+	public static boolean oneEditReplace(String s1, String s2) {
+		int edits = 0;
+
+		for (int i = 0; i < s1.length(); i++) {
+			if (s1.charAt(i) != s2.charAt(i)) {
+				edits++;
+			}
+		}
+
+		return (edits <= 1);
+	}
+
+	public static void main(String[] args) {
+		System.out.println(Strings.oneEdit("ple", "pale"));
+		System.out.println(Strings.oneEdit("pales", "pale"));
+		System.out.println(Strings.oneEdit("pale", "bale"));
+		System.out.println(Strings.oneEdit("pale", "bae"));
 
 	}
 
