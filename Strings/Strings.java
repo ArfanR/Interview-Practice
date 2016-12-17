@@ -112,13 +112,17 @@ public class Strings  {
 	public static boolean oneEditInsert(String s1, String s2) {
 		int index1 = 0;
 		int index2 = 0;
+		int edits = 0;
 		
 		while (index1 < s1.length() && index2 < s2.length()) {
 			if (s1.charAt(index1) != s2.charAt(index2)) {
-				if (index1 != index2) {
-					return false;
+				edits++;
+				if (s1.length() < s2.length()) {
+					index2++;
 				}
-				index2++;
+				else {
+					index1++;
+				}
 			}
 			else {
 				index1++;
@@ -126,7 +130,7 @@ public class Strings  {
 			}
 		}
 
-		return true;
+		return (edits <= 1);
 	}
 
 	public static boolean oneEditReplace(String s1, String s2) {
