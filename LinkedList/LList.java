@@ -1,10 +1,21 @@
 import java.util.*;
 
+class LinkedListNode {
+
+    public Object data;
+   	public LinkedListNode next;
+
+   	public LinkedListNode(Object data) {
+   		this.data = data;
+   	}
+}
+
 public class LList {
 
-	// delete duplicates from a linkedlist
+	// Time complexity: O(n)
+	// Use hash set to check for duplicates
 	public static LinkedListNode deleteDups(LinkedListNode n) {
-		HashSet<Integer> set = new HashSet<Integer>();
+		HashSet<Object> set = new HashSet<Object>();
 		LinkedListNode previous = null;
 		while (n != null) {
 			if (set.contains(n.data)) {
@@ -20,17 +31,18 @@ public class LList {
 		return previous;
 	}
 
-	// recursive solution for kth to last
+	// Time complexity: O(n)
+	// Recursive solution for kth to last
 	class Index {
 		public int value = 0;
 	}
 
-	public static LinkedListNode kthToLast(LinkedListNode head, int k) {
+	LinkedListNode kthToLast(LinkedListNode head, int k) {
 		Index idx = new Index();
 		return kthToLast(head, k, idx);
 	}
 
-	public static LinkedListNode kthToLast(LinkedListNode head, int k, Index idx) {
+	LinkedListNode kthToLast(LinkedListNode head, int k, Index idx) {
 		if (head == null) {
 			return null;
 		}
@@ -41,9 +53,9 @@ public class LList {
 		}
 		return node;
 	}
-
-	// iterative solution for kth to last
-	public static LinkedListNode nthToLast(LinkedListNode head, int k) {
+	// Time complexity: O(n)
+	// Iterative solution for kth to last
+	LinkedListNode nthToLast(LinkedListNode head, int k) {
 		LinkedListNode p1 = head;
 		LinkedListNode p2 = head;
 
@@ -60,7 +72,8 @@ public class LList {
 		return p2;
 	}
 
-	// delete middle node 
+	// Time complexity: O(n)
+	// Delete middle node 
 	public static boolean deleteNode(LinkedListNode n) {
 		if (n == null || n.next == null) {
 			return false;
@@ -71,7 +84,35 @@ public class LList {
 		return true;
 	}
 
-	public static void main(String[] args) {
+	// Time Complexity: O(n)
+	// Rearrange nodes into two linkedlists
+	LinkedListNode partition(LinkedListNode node, int x) {
+		LinkedListNode before = node;
+		LinkedListNode after = node;
 
+		while (node != null) {
+			LinkedListNode next = node.next;
+			if (node.data < x) {
+				node.next = before;
+				before = node;
+			}
+			else {
+				after.next = node;
+				after = node;
+			}
+			node = next;
+		}
+		after.next = null;
+
+		return before;
+	}
+
+	public static void main(String[] args) {
+		LinkedListNode node_1 = new LinkedListNode("first");        
+        LinkedListNode node_2 = new LinkedListNode("second");
+        node_1.next = node_2;
+        LinkedListNode node_3 = new LinkedListNode("third");
+        node_2.next = node_3;
+        
 	}
 }
