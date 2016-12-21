@@ -5,7 +5,9 @@ class LinkedListNode {
     public Object data;
    	public LinkedListNode next;
 
-   	public LinkedListNode(Object data) {
+   	public LinkedListNode() {}
+
+   	public void setVal(Object data) {
    		this.data = data;
    	}
 
@@ -125,7 +127,9 @@ public class LList {
 		}
 		val = val % 10;
 
-		LinkedListNode result = new LinkedListNode(val);
+		LinkedListNode result = new LinkedListNode();
+		result.setVal(val);
+		// tail recursion
 		if (node1 != null || node2 != null) {
 			LinkedListNode next = sumLists(node1 == null ? null : node1.next, node2 == null ? null : node2.next, val >= 10 ? 1 : 0);
 			result.setNext(next);
@@ -134,12 +138,59 @@ public class LList {
 		return result;
 	}
 
+	class PartialSum {
+		public LinkedListNode sum = null;
+		public int carry = 0;
+	}
+
+	LinkedListNode sumListsForward(LinkedListNode node1, LinkedListNode node2, int rem) {
+		int len1 = length(l1);
+		int len2 = length(l2);
+
+		// pad list with zeros
+		if (len1 < len2) {
+			node1 = padList(node1, len2-len1);
+		}
+		else {
+			node2 = padList(node2, len1-len2);
+		}
+
+		// head recursion
+
+
+	}
+
+	PartialSum addListsHelper(LinkedListNode n1, LinkedListNode n2) {
+		if (n1 == null && n2 == null) {
+			return new PartialSum();
+		}
+
+		PartialSum sum = addListsHelper(n1.next, n2.next);
+		int val = sum.carry + n1.data + n2.data;
+		LinkedListNode fullResult = insertBefore(sum.sum, val % 10);
+		sum.sum = fullResult;
+		sum.carry = val / 10;
+
+		return sum;
+
+	}
+	LinkedListNode padList(LinkedListNode l, int padding) {
+		LinkedListNode head = l;
+		for (int i = 0; i < padding; i++) {
+			head = insertBefore(head, 0);
+		}
+		return head;
+	}
+
+	LinkedListNode insertBefore(LinkedListNode list, int data) {
+		LinkedListNode node = new LinkedListNode(data);
+		if (list != null) {
+			node.next = list;
+		}
+		return node;
+	}
+
 	public static void main(String[] args) {
-		LinkedListNode node_1 = new LinkedListNode("first");        
-        LinkedListNode node_2 = new LinkedListNode("second");
-        node_1.next = node_2;
-        LinkedListNode node_3 = new LinkedListNode("third");
-        node_2.next = node_3;
         
 	}
 }
