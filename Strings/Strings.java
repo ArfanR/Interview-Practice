@@ -3,8 +3,6 @@ import java.util.*;
 
 public class Strings  {
 
-	// Time complexity: O(n), where n is length of the string
-	// Space complexity: O(1)
 	// Check if character counts are no more than 1
 	public static boolean isUniqueChars(String str) {
 		if (str.length() > 128)
@@ -22,7 +20,6 @@ public class Strings  {
 		return true;
 	}
 
-	// Time complexity: O(n)
 	// Check if both strings have identical character counts
 	public static boolean checkPermutation(String s1, String s2) {
 		if (s1.length() != s2.length()) {
@@ -48,7 +45,6 @@ public class Strings  {
 
 	}
 
-	// Time complexity: O(n)
 	// Count white spaces and fill in new char array backward
 	public static void replaceSpace(char[] str, int trueLength) {
 		int spaces = 0;
@@ -76,7 +72,6 @@ public class Strings  {
 		}
 	}
 
-	// Time Complexity: O(n)
 	// Check if odd character counts are no more than 1
 	public static boolean isPermutationofPalindrome(String str) {
 		int countOdd = 0;
@@ -97,7 +92,6 @@ public class Strings  {
 
 	}
 
-	// Time Complexity: O(n)
 	// Check if strings are one or zero edits away: replacement, insertion or removal
 	public static boolean oneEdit(String s1, String s2) {
 		if (s1.length() == s2.length()) {

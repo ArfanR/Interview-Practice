@@ -8,11 +8,14 @@ class LinkedListNode {
    	public LinkedListNode(Object data) {
    		this.data = data;
    	}
+
+   	public void setNext(LinkedListNode next) {
+   		this.next = next;
+   	}
 }
 
 public class LList {
 
-	// Time complexity: O(n)
 	// Use hash set to check for duplicates
 	public static LinkedListNode deleteDups(LinkedListNode n) {
 		HashSet<Object> set = new HashSet<Object>();
@@ -31,7 +34,6 @@ public class LList {
 		return previous;
 	}
 
-	// Time complexity: O(n)
 	// Recursive solution for kth to last
 	class Index {
 		public int value = 0;
@@ -53,7 +55,7 @@ public class LList {
 		}
 		return node;
 	}
-	// Time complexity: O(n)
+	
 	// Iterative solution for kth to last
 	LinkedListNode nthToLast(LinkedListNode head, int k) {
 		LinkedListNode p1 = head;
@@ -72,7 +74,7 @@ public class LList {
 		return p2;
 	}
 
-	// Time complexity: O(n)
+	
 	// Delete middle node 
 	public static boolean deleteNode(LinkedListNode n) {
 		if (n == null || n.next == null) {
@@ -84,27 +86,52 @@ public class LList {
 		return true;
 	}
 
-	// Time Complexity: O(n)
-	// Rearrange nodes into two linkedlists
+	// Partition nodes into two linked lists
 	LinkedListNode partition(LinkedListNode node, int x) {
-		LinkedListNode before = node;
-		LinkedListNode after = node;
+		LinkedListNode head = node;
+		LinkedListNode tail = node;
 
 		while (node != null) {
 			LinkedListNode next = node.next;
 			if (node.data < x) {
-				node.next = before;
-				before = node;
+				node.next = head;
+				head = node;
 			}
 			else {
-				after.next = node;
-				after = node;
+				tail.next = node;
+				tail = node;
 			}
 			node = next;
 		}
-		after.next = null;
+		tail.next = null;
 
-		return before;
+		return head;
+	}
+
+
+	// Sum of two linked lists in reverse order
+	// Recursive solution
+	LinkedListNode sumLists(LinkedListNode node1, LinkedListNode node2, int rem) {
+		if (node1 == null && node2 == null && rem == 0) {
+			return null;
+		}
+
+		int val = 0;
+		if (node1 != null) {
+			val += node1.data;
+		}
+		if (node2 != null) {
+			val += node2.data;
+		}
+		val = val % 10;
+
+		LinkedListNode result = new LinkedListNode(val);
+		if (node1 != null || node2 != null) {
+			LinkedListNode next = sumLists(node1 == null ? null : node1.next, node2 == null ? null : node2.next, val >= 10 ? 1 : 0);
+			result.setNext(next);
+		}
+
+		return result;
 	}
 
 	public static void main(String[] args) {
