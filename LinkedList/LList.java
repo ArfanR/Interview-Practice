@@ -138,6 +138,8 @@ public class LList {
 		return result;
 	}
 
+	// sum of two linked lists in forward order
+	// PartialSum wrapper class
 	class PartialSum {
 		public LinkedListNode sum = null;
 		public int carry = 0;
@@ -156,7 +158,15 @@ public class LList {
 		}
 
 		// head recursion
+		PartialSum sum = addListHelper(node1, node2);
 
+		if (sum.carry == 0) {
+			return sum.sum;
+		}
+		else {
+			LinkedListNode result = insertBefore(sum.sum, sum.carry);
+			return result;
+		}
 
 	}
 
@@ -174,6 +184,7 @@ public class LList {
 		return sum;
 
 	}
+
 	LinkedListNode padList(LinkedListNode l, int padding) {
 		LinkedListNode head = l;
 		for (int i = 0; i < padding; i++) {
