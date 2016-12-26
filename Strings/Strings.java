@@ -9,6 +9,7 @@ public class Strings  {
 			return false;
 		
 		int[] char_set = new int[128];
+		
 		for(int i = 0; i < str.length(); i++) {
 			int val = (int) str.charAt(i);
 			char_set[val]++;
@@ -140,11 +141,7 @@ public class Strings  {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(Strings.oneEdit("ple", "pale"));
-		System.out.println(Strings.oneEdit("pales", "pale"));
-		System.out.println(Strings.oneEdit("pale", "bale"));
-		System.out.println(Strings.oneEdit("pale", "bae"));
-
+	
 	}
 
 }
