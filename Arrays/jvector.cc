@@ -20,7 +20,7 @@ JVector::~JVector() {}
 int JVector::DetermineCapacity(int capacity) const {
   int true_capacity = kMinCapacity;
 
-  while (capacity > true_capacity / kGrowthFactor) {
+  while (capacity > true_capacity) {
     true_capacity *= kGrowthFactor;
   }
 
@@ -141,7 +141,7 @@ void JVector::Insert(int index, int value) {
   ++size_;
 }
 
-void JVector::Prepend(int value) { Insert(0, 42); }
+void JVector::Prepend(int value) { Insert(0, value); }
 
 void JVector::Delete(int index) {
   if (index < 0 or index >= size_) {
