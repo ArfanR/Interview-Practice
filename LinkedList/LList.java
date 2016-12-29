@@ -7,6 +7,11 @@ class LinkedListNode {
 
    	public LinkedListNode() {}
 
+   	public LinkedListNode(Object data) {
+   		this.data = data;
+   		this.next = null;
+   	}
+
    	public void setVal(Object data) {
    		this.data = data;
    	}
@@ -14,6 +19,15 @@ class LinkedListNode {
    	public void setNext(LinkedListNode next) {
    		this.next = next;
    	}
+
+   	public Object getVal() {
+   		return this.data;
+   	}
+
+   	public LinkedListNode getNext() {
+   		return this.next;
+   	}
+   	
 }
 
 public class LList {
