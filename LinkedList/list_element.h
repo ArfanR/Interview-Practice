@@ -7,7 +7,7 @@ namespace jw {
 
 template <class T>
 class ListElement {
- public:
+public:
   ListElement(const T &value) : next_(nullptr), data_(value) {}
   ~ListElement() {}
   ListElement(const ListElement &) = delete;
