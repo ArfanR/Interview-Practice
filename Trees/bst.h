@@ -13,10 +13,12 @@ struct BSTNode {
 
 // Returns a new node for our BST
 BSTNode* GetNewNode(int value);
+// Inserts new node in our tree
+BSTNode* Insert(BSTNode* node, int value);
 // Returns true if given value is in our tree
 bool Search(BSTNode* node, int value);
-// Frees memory allocated for the tree.
-void DeleteTree(BSTNode* node);
+// Returns the node in the tree with the minimum value
+BSTNode* GetMinNode(BSTNode* node);
 // Returns the minimum value stored in the tree,
 // or -1 if tree is empty
 int GetMin(BSTNode* node);
@@ -25,6 +27,8 @@ int GetMin(BSTNode* node);
 int GetMax(BSTNode* node);
 // Returns height of the tree, 0 if empty
 int GetHeight(BSTNode* node);
+// Frees memory allocated for the tree.
+void DeleteTree(BSTNode* node);
 // Print out the items in the tree in level order
 void PrintBFS(BSTNode* node);
 // Print out the items in the tree in order (inorder)
@@ -35,8 +39,6 @@ bool IsBinarySearchTree(BSTNode* node);
 bool IsBetween(BSTNode* node, int min, int max);
 // Delete a specific node from the tree
 BSTNode* DeleteValue(BSTNode* node, int value);
-// Returns the node in the tree with the minimum value
-BSTNode* GetMinNode(BSTNode* node);
 // Returns the in-order successor of the given value
 BSTNode* GetSuccessor(BSTNode* node, int value);
 

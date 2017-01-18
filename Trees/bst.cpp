@@ -1,4 +1,4 @@
-#include "bst_simple.h"
+#include "bst.h"
 
 namespace jw {
 
