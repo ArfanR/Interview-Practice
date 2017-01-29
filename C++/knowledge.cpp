@@ -36,6 +36,7 @@
     }
 
 /*
+
 Hash Table vs STL Map
 In a hash table a value is stored by calling a hash function on a key. Values are not stored in sorted order. Additionally,
 since hash tables use the key to find the index that will store the value, an insert or lookup can be done in amortized
@@ -61,6 +62,13 @@ deletion of objects. Shallow copy should be used very carefully and only when a 
 to do. In most cases, shallow copy is used when there is a need to pass information about a complex structure without
 actual duplication of data. One must also be careful with destruction of objects in a shallow copy. In real life, shallow
 copy is rarely used. Deep copy should be used in most cases, especially when the size of the copied  structure is small.
+
+Volatile
+The keyword volatile informs the compiler that the value of variable it is applied to can change from the outside, without
+ny update done by the code. This may be done by the operating system, the hardware, or another thread. Because the value
+can change unexpectedly, the compiler will therefore reload the value each time from memory. Volatile variables are also
+useful when multi-threaded programs have global variables and any thread can modify these shared variables. We may not
+want optimization on these variables.
 */
 
 
