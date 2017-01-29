@@ -14,6 +14,9 @@ public class Knowledge {
         }
 
         /* compute start of circular array and the size of it */
+        int start = size > K ? (size % K): 0;
+        int count = min(K, size);
+
 
     }
 
