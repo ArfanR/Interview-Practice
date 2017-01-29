@@ -69,6 +69,11 @@ ny update done by the code. This may be done by the operating system, the hardwa
 can change unexpectedly, the compiler will therefore reload the value each time from memory. Volatile variables are also
 useful when multi-threaded programs have global variables and any thread can modify these shared variables. We may not
 want optimization on these variables.
+
+Virtual Destructor
+We want to ensure that the destructor for the most derived class is called, so that the base class' destructor isn't
+only called.
+
 */
 
 
