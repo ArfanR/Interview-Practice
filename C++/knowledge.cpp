@@ -34,3 +34,27 @@
             str[i] = tmp;
         }
     }
+
+/*
+Hash Table vs STL Map
+
+In a hash table a value is stored by calling a hash function on a key. Values are not stored in sorted order. Additionally,
+since hash tables use the key to find the index that will store the value, an insert or lookup can be done in amortized
+0(1) time (assuming few collisions in the hash table). In a hash table, one must also handle potential collisions. This is
+often done by chaining, which means to create a linked list of all the values whose keys map to a particular
+index. On the other hand, an STL map inserts the key/value pairs into a binary search tree based on the keys. There is no
+need to handle collisions, and, since the tree is balanced,the insert and lookup time is guaranteed to be 0(log N).
+If the number of inputs is small, then the STL map is best to use.
+
+*/
+
+
+
+
+
+
+
+
+
+
+
