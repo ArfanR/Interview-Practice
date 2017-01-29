@@ -19,7 +19,7 @@ Linked Lists
 5. Sum Lists: You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in reverse order, such that the 1's digit is at the head of the list. Write a function that adds the two numbers and returns the sum as a linked list.
 6. Palindrome: Implement a function to check if a linked list is a palindrome.
 
-C++
+C++ Knowledge
 
 1. Last K Lines: Write a method to print the last K lines of an input file using C++.
 2. Reverse String: Implement a function void reverse ( char* str) in C or C++ which reverses a null-terminated string.
@@ -32,3 +32,15 @@ C++
 9. Smart Pointer: Write a smart pointer class. A smart pointer is a data type, usually implemented with templates, that simulates a pointer while also providing automatic garbage collection. It automatically counts the number of references to a SmartPointer<T* >object and frees the object of type T when the reference count hits zero.
 10. Malloc: Write an aligned malloc and free function that supports allocating memory such that the memory address returned is divisible by a specific power of two.
 11. Alloc: Write a function in C called my2DAlloc which allocates a two-dimensional array. Minimize the number of calls to malloc and make sure that the memory is accessible by the notation arr[i][j].
+
+Java Knowledge
+
+1. Private Constructor: In terms of inheritance, what is the effect of keeping a constructor private?
+2. Return from Finally: In Java, does the finally block get executed if we insert a return state- ment inside the try block ofa try-catch-finally?
+3. Final,etc.:What is the difference between final, finally, and finalize?
+4. Generics vs. Templates: Explain the difference between templates in C++ and generics in Java.
+5. TreeMap, HashMap, LinkedHashMap: Explain the differences between TreeMap, HashMap, and
+LinkedHashMap. Provide an example of when each one would be best.
+6. Object Reflection: Explain what object reflection is in Java and why it is useful.
+7. Lambda Expressions: There is a class Country that has methods getContinentO and getPopulationO. Write a function int getPopulation(List<Country> countries, String continent) that computes the total population of a given continent, given a list of all countries and the name o f a continent.
+8. Lambda Random: Using Lambda expressions, write a function List<Integer> getRandomSubset(List<Integer> list) that returns arandom subset of arbitrary size. All subsets (including the empty set) should be equally likely to be chosen.
