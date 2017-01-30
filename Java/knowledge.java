@@ -38,5 +38,31 @@ More Differences:
     - In Java, all instances of MyClass, regardless of their type parameters, are the same type. The type parameters are
       erased at runtime. In C++, instances with different type parameters are different types.
 
+TreeMap vs HashMap vs LinkedHashMap
+HashMap offers O(1) lookup and insertion. If you iterate through the keys, though, the ordering of the keys is
+essentially arbitrary. It is implemented by an array of linked lists.
+TreeMap offers O(log N) lookup and insertion. Keys are ordered, so if you need to iterate through the keys in sorted
+order, you can. This means that keys must implement the Comparable interface. TreeMap is implemented by a Red-BlackTree.
+LinkedHashMap offers 0(1) lookup and insertion. Keys are ordered by their insertion order. It is implemented by
+doubly-linked buckets.
+
+
 
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
