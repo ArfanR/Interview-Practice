@@ -1,4 +1,5 @@
 /*
+
 Private Constructor
 Declaring a constructor private on class A means that you can only access the (private) constructor if you could also
 access A's private methods. Who, other than A, can access A's private methods and constructor? A's inner classes can.
@@ -50,6 +51,13 @@ Generally, unless there is a reason not to, you would use HashMap.That is, if yo
 order, then use LinkedHashMap. lfyou need to get the keys back in their true/natural order, then use TreeMap, Otherwise,
 HashMap is probably best It is typically faster and requires less overhead.
 
+Object Reflection
+    - It can help you observe or manipulate the runtime behavior of applications.
+    - It can help you debug or test programs, as you have direct access to methods, constructors, and fields.
+    - You can call methods by name when you don't know the method in advance. For example, we may let the user pass in
+    a class name, parameters for the constructor, and a method name. We can then use this information to create an object
+    and call a method. Doing these operations without reflection would require a complex series of if-statements, if
+    it's possible at all.
 
 */
 
