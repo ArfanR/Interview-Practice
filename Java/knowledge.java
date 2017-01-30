@@ -46,6 +46,9 @@ order, you can. This means that keys must implement the Comparable interface. Tr
 LinkedHashMap offers 0(1) lookup and insertion. Keys are ordered by their insertion order. It is implemented by
 doubly-linked buckets.
 
+Generally, unless there is a reason not to, you would use HashMap.That is, if you need to get the keys back in insertion
+order, then use LinkedHashMap. lfyou need to get the keys back in their true/natural order, then use TreeMap, Otherwise,
+HashMap is probably best It is typically faster and requires less overhead.
 
 
 */
