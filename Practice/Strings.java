@@ -1,6 +1,51 @@
 import java.io.*;
 import java.util.*;
 
+// Find first nonrepeated character
+public static Character firstNonrepeat(String str) {
+	HashMap<Character, Integer> count = new HashMap<Character, Integer>();
+	// build hash table
+	for (int i = 0; i < str.length(); i++) {
+		if (count.containsKey(str.charAt(i)) {
+			count.put(str.charAt(i), count.get(str.charAt(i))+1);
+		}
+		else {
+			count.put(str.charAt(i), 1);
+		}
+	}
+	// check counts
+	for (int i = 0; i < str.length(); i++) {
+		if (count.get(str.charAt(i)) == 1) {
+			return str.charAt(i);
+		}
+	}
+	return null;
+}
+
+// Remove specified characters from string
+public static String removeChars(String str, String remove) {
+	HashSet<Character> removeSet = new HashSet<Character>();
+	StringBuilder newString = new StringBuilder();
+
+	for (int i = 0; i < remove.length(); i++) {
+		if (!removeSet.contains(remove.charAt(i))) {
+			removeSet.add(remove.charAt(i));
+		}
+	}
+
+	for (char c : str.toCharArray()) {
+		if (removeSet.contains(c)) {
+			newString.append(new String(" "));
+		}
+		else {
+			newString.append(Character.toString(c));
+		}
+	}
+
+	return newString.toString();
+
+}
+
 // Check if character counts are no more than 1
 public static boolean isUniqueChars(String str) {
 	if (str.length() > 128)
