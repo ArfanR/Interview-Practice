@@ -27,10 +27,29 @@ class LinkedListNode {
    	public LinkedListNode getNext() {
    		return this.next;
    	}
-   	
+
 }
 
 public class LList {
+
+	// detect if linked list is cyclic
+	public static boolean isCyclic(LinkedListNode head) {
+		LinkedListNode slow = head;
+		LinkedListNode fast = head.next;
+
+		while (true) {
+			if (fast.next == null || fast == null) {
+				return false;
+			}
+			else if (fast == slow || fast.next == slow) {
+				return true;
+			}
+			else {
+				slow = slow.next;
+				fast = fast.next.next;
+			}
+		}
+	}
 
 	// Use hash set to check for duplicates
 	public static LinkedListNode deleteDups(LinkedListNode n) {
@@ -71,7 +90,7 @@ public class LList {
 		}
 		return node;
 	}
-	
+
 	// Iterative solution for kth to last
 	LinkedListNode nthToLast(LinkedListNode head, int k) {
 		LinkedListNode p1 = head;
@@ -90,8 +109,8 @@ public class LList {
 		return p2;
 	}
 
-	
-	// Delete middle node 
+
+	// Delete middle node
 	public static boolean deleteNode(LinkedListNode n) {
 		if (n == null || n.next == null) {
 			return false;
@@ -216,6 +235,6 @@ public class LList {
 	}
 
 	public static void main(String[] args) {
-        
+
 	}
 }
