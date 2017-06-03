@@ -183,6 +183,26 @@ public static boolean oneEditReplace(String s1, String s2) {
 	return (edits <= 1);
 }
 
+// compress string with counts of repeated characters
+public static String compress(String str) {
+	StringBuilder newString = new StringBuilder();
+	int countRepeats = 0;
+
+	int i = 0;
+	while (i < str.length()) {
+		countRepeats++;
+		if (str.charAt(i) != str.charAt(i+1)) {
+			newString.append(str.charAt(i));
+			newString.append(countRepeats);
+			countRepeats = 0;
+			i++;
+		}
+		i++;
+	}
+
+	return str.length() > newString.length() ? newString.toString() : str;
+}
+
 public static void main(String[] args) {
 
 }
