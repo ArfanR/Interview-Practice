@@ -32,6 +32,22 @@ class LinkedListNode {
 
 public class LList {
 
+	// reverse a linked list
+	public static void reverse(LinkedListNode head) {
+		LinkedListNode prev = null;
+		LinkedListNode current = head;
+		LinkedListNode next;
+
+		while (current != null) {
+			next = current.getNext();
+			current.setNext(prev);
+			prev = current;
+			current = next;
+		}
+
+		head = prev;
+	}
+
 	// detect if linked list is cyclic
 	public static boolean isCyclic(LinkedListNode head) {
 		LinkedListNode slow = head;

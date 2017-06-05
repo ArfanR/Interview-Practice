@@ -203,6 +203,14 @@ public static String compress(String str) {
 	return str.length() > newString.length() ? newString.toString() : str;
 }
 
+// check if string is rotation of another
+public static String isRotaion(String s1, String s2) {
+	if (s1.length == s2.length) {
+		return isSubstring(s1, s2+s2);
+	}
+	return false;
+}
+
 public static void main(String[] args) {
 
 }
