@@ -1,35 +1,5 @@
 import java.util.*;
 
-class LinkedListNode {
-
-    public Object data;
-   	public LinkedListNode next;
-
-   	public LinkedListNode() {}
-
-   	public LinkedListNode(Object data) {
-   		this.data = data;
-   		this.next = null;
-   	}
-
-   	public void setVal(Object data) {
-   		this.data = data;
-   	}
-
-   	public void setNext(LinkedListNode next) {
-   		this.next = next;
-   	}
-
-   	public Object getVal() {
-   		return this.data;
-   	}
-
-   	public LinkedListNode getNext() {
-   		return this.next;
-   	}
-
-}
-
 public class LList {
 
 	// reverse a linked list
