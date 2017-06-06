@@ -27,10 +27,45 @@ class LinkedListNode {
    	public LinkedListNode getNext() {
    		return this.next;
    	}
-   	
+
 }
 
 public class LList {
+
+	// reverse a linked list
+	public static void reverse(LinkedListNode head) {
+		LinkedListNode prev = null;
+		LinkedListNode current = head;
+		LinkedListNode next;
+
+		while (current != null) {
+			next = current.getNext();
+			current.setNext(prev);
+			prev = current;
+			current = next;
+		}
+
+		head = prev;
+	}
+
+	// detect if linked list is cyclic
+	public static boolean isCyclic(LinkedListNode head) {
+		LinkedListNode slow = head;
+		LinkedListNode fast = head.next;
+
+		while (true) {
+			if (fast.next == null || fast == null) {
+				return false;
+			}
+			else if (fast == slow || fast.next == slow) {
+				return true;
+			}
+			else {
+				slow = slow.next;
+				fast = fast.next.next;
+			}
+		}
+	}
 
 	// Use hash set to check for duplicates
 	public static LinkedListNode deleteDups(LinkedListNode n) {
@@ -71,7 +106,7 @@ public class LList {
 		}
 		return node;
 	}
-	
+
 	// Iterative solution for kth to last
 	LinkedListNode nthToLast(LinkedListNode head, int k) {
 		LinkedListNode p1 = head;
@@ -90,8 +125,8 @@ public class LList {
 		return p2;
 	}
 
-	
-	// Delete middle node 
+
+	// Delete middle node
 	public static boolean deleteNode(LinkedListNode n) {
 		if (n == null || n.next == null) {
 			return false;
@@ -127,6 +162,7 @@ public class LList {
 
 	// Sum of two linked lists in reverse order
 	// Recursive solution
+	// Example of tail recursion: do work on the way down, then recurse
 	LinkedListNode sumLists(LinkedListNode node1, LinkedListNode node2, int rem) {
 		if (node1 == null && node2 == null && rem == 0) {
 			return null;
@@ -159,7 +195,7 @@ public class LList {
 		public int carry = 0;
 	}
 
-	LinkedListNode sumListsForward(LinkedListNode node1, LinkedListNode node2, int rem) {
+	LinkedListNode sumListsForward(LinkedListNode node1, LinkedListNode node2) {
 		int len1 = length(l1);
 		int len2 = length(l2);
 
@@ -171,8 +207,17 @@ public class LList {
 			node2 = padList(node2, len1-len2);
 		}
 
+		if (n1 == null && n2 == null) {
+			return new PartialSum();
+		}
+
 		// head recursion
-		PartialSum sum = addListHelper(node1, node2);
+		PartialSum sum = sumListsForward(n1.next, n2.next);
+		int val = sum.carry + n1.data + n2.data;
+		LinkedListNode fullResult = insertBefore(sum.sum, val % 10);
+		sum.sum = fullResult;
+		sum.carry = val / 10;
+		return sum;
 
 		if (sum.carry == 0) {
 			return sum.sum;
@@ -181,21 +226,6 @@ public class LList {
 			LinkedListNode result = insertBefore(sum.sum, sum.carry);
 			return result;
 		}
-
-	}
-
-	PartialSum addListsHelper(LinkedListNode n1, LinkedListNode n2) {
-		if (n1 == null && n2 == null) {
-			return new PartialSum();
-		}
-
-		PartialSum sum = addListsHelper(n1.next, n2.next);
-		int val = sum.carry + n1.data + n2.data;
-		LinkedListNode fullResult = insertBefore(sum.sum, val % 10);
-		sum.sum = fullResult;
-		sum.carry = val / 10;
-
-		return sum;
 
 	}
 
@@ -216,6 +246,6 @@ public class LList {
 	}
 
 	public static void main(String[] args) {
-        
+
 	}
 }
