@@ -10,6 +10,7 @@ public class Trees {
         Visited, Visiting, Unvisited;
     }
     // determine if there is a route between two nodes
+    // Breadth First Search
     public static boolean isRoute(Graph g, Node start, Node end) {
         if (start == end) return true;
 
@@ -40,4 +41,23 @@ public class Trees {
 
         return false;
     }
+
+    // create minimal BST from sorted array
+    public static TreeNode createMinimalBST(int arr[]) {
+        return createMinimalBST(arr, 0, arr.length-1);
+    }
+
+    public static TreeNode createMinimalBST(int arr[], int start, int end) {
+        if (start == end) {
+            return new TreeNode(arr[start]);
+        }
+        else {
+            int mid = (start+end) / 2;
+            TreeNode n = new TreeNode(arr[mid]);
+            n.left = createMinimalBST(arr, start, mid-1);
+            n.right = createMinimalBST(arr, mid+1, start);
+            return n;
+        }
+    }
+
 }
