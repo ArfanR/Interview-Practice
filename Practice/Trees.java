@@ -60,4 +60,31 @@ public class Trees {
         }
     }
 
+    // make linked list of each depth in binary tree
+    public static HashTable<Integer, LinkedList<TreeNode>> createLevelLinkedList(TreeNode root) {
+        HashTable<Integer, LinkedList<TreeNode>> result = new HashTable<Integer, LinkedList<TreeNode>>();
+
+        LinkedList<TreeNode> q = new LinkedList<TreeNode();
+        if (root != null) {
+            q.add(root);
+        }
+
+        int level = 0;
+        while (!q.isEmpty()) {
+            result.put(level, q);
+            LinkedList<TreeNode> parent = q;
+            q = new LinkedList<TreeNode>();
+            for (TreeNode n : parent) {
+                if (parent != null) {
+                    q.add(n.left);
+                    q.add(n.right);
+                }
+            }
+            level++;
+        }
+
+        return result;
+    }
+
+
 }
