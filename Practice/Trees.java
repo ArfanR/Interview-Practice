@@ -102,6 +102,24 @@ public class Trees {
         }
     }
 
+    // check if tree is a BST
+    public static boolean isBinarySearchTree(TreeNode node) {
+        return IsBetween(node, null, null);
+    }
+
+    public static boolean IsBetween(TreeNode node, int min, int max) {
+        if (node == null) return true;
+
+        if (node.data > min && node.data < max &&
+            IsBetween(node.left, min, node.data) &&
+            IsBetween(node.right, node.data, max))
+            return true;
+        else
+            return false;
+    }
+
+
+
 }
 
 
