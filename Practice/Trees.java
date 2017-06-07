@@ -1,8 +1,3 @@
-class BSTNode {
-    public int data;
-    public BSTNode left;
-    public BSTNode right;
-}
 
 public class Trees {
 
@@ -114,11 +109,43 @@ public class Trees {
             IsBetween(node.left, min, node.data) &&
             IsBetween(node.right, node.data, max))
             return true;
-        else
+        else {
             return false;
+        }
     }
 
+    // get min node
+    public static TreeNode minNode(TreeNode n) {
+        if (n == null) {
+            return null;
+        }
 
+        while (n.left != null) {
+            n = n.left;
+        }
+
+        return n;
+    }
+
+    // find in order successor to a node
+    public static TreeNode inOrderSuccessor(TreeNode n) {
+        if (n == null) return null;
+
+        // min node of right subtree
+        if (n.right != null) {
+            return minNode(n.right);
+        }
+        // find deepest ancestor where value is in left subtree
+        else {
+            TreeNode ancestor = n;
+            TreeNode sucessor = ancestor.parent;
+            while (sucessor != null & successor.left != null) {
+                ancestor = successor;
+                successor = succesor.parent;
+            }
+            return successor;
+        }
+    }
 
 }
 
