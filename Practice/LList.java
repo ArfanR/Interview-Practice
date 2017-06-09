@@ -299,6 +299,34 @@ public class LList {
 		return result;
 	}
 
+	// return node where there is a cycle
+	public static LinkedListNode findCycle(LinkedListNode head) {
+		LinkedListNode cycle;
+		LinkedListNode slow = head;
+		LinkedListNode fast = head.next;
+
+		while (true) {
+			if (fast.next == null || fast == null) {
+				return null;
+			}
+			else if (fast == slow || fast.next == slow) {
+				break;
+			}
+			else {
+				slow = slow.next;
+				fast = fast.next.next;
+			}
+		}
+
+		slow = head;
+		while (slow != fast) {
+			slow = slow.next;
+			fast = fast.next;
+		}
+
+		return slow;
+
+	}
 
 	public static void main(String[] args) {
 
