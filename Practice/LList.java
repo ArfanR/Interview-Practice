@@ -215,6 +215,91 @@ public class LList {
 		return node;
 	}
 
+	// check if llist is palindrome using stack
+	public static boolean isPalindrome(LinkedListNode head) {
+		LinkedListNode slow = head;
+		LinkedListNode fast = head;
+
+		Stack<Integer> stack = new Stack<Integer>();
+		while (fast != null && fast.next != null) {
+			stack.push(slow.data);
+			slow = slow.next;
+			fast = fast.next.next;
+		}
+
+		if (fast != null) {
+			slow = slow.next;
+		}
+
+		while (slow != null) {
+			int top = stack.pop();
+			if (top != slow.data) {
+				return false;
+			}
+			slow = slow.next;
+		}
+		return true;
+
+	}
+
+	class Result {
+		public LinkedListNode tail;
+		public int size;
+		public Result(LinkedListNode tail, int size) {
+			this.tail = tail;
+			this.size = size;
+		}
+	}
+
+	public Result getResult(LinkedListNode node) {
+		int length = 1;
+		LinkedListNode temp = node;
+
+		while (temp.next != null) {
+			length++;
+			temp = temp.next;
+		}
+
+		return new Result(temp, length);
+	}
+
+	// check for intersection between two linked lists
+	LinkedListNode intersection(LinkedListNode node1, LinkedListNode node2) {
+		LinkedListNode result = null;
+
+		Result listA = getResult(node1);
+		Result listB = getResult(node2);
+
+		if (listA.tail == listB.tail) {
+			int diff = 0;
+			if (listA.size > listB.size) {
+				diff = listA.size - listB.size;
+			}
+			else if (listA.size < listB.size) {
+				diff = listB.size - listA.size;
+			}
+
+			while (node1 != node2) {
+				if (listA.size > listB.size) {
+					node2 = node2.next;
+					for (int i = 0; i < diff; i++) { node1 = node1.next; };
+				}
+				else if (listA.size < listB.size) {
+					node1 = node1.next;
+					for (int i = 0; i < diff; i++) { node2 = node2.next; };
+				}
+				else {
+					node1 = node1.next;
+					node2 = node2.next;
+				}
+			}
+			result = node1;
+		}
+
+		return result;
+	}
+
+
 	public static void main(String[] args) {
 
 	}
