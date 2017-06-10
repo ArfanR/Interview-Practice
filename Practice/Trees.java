@@ -147,6 +147,46 @@ public class Trees {
         }
     }
 
+    // searches for existing node in binary tree
+    public static boolean search(TreeNode node, TreeNode root) {
+        if (node == null) {
+            return false;
+        }
+        else if (node == root) {
+            return true;
+        }
+        else {
+            return search(node.left, root) || search(node.right, root);
+        }
+    }
+
+    // find lowest common ancestor in binary tree
+    public static boolean findLowestCommonAncestor(TreeNode node1, TreeNode node2, TreeNode root) {
+        if (root == null || node1 == root || node2 == root) {
+            return root;
+        }
+        if (!search(node1, root) || !search(node2, root)) {
+            return null;
+        }
+
+        return ancestorHelper(node1, node2, root);
+    }
+
+    public static TreeNode ancestorHelper(TreeNode node1, TreeNode node2, TreeNode root) {
+        boolean node1onLeft = search(node1, root.left);
+        boolean node2onLeft = search(node2, root.left);
+
+        if (node1onLeft && search(node2, root.right)) {
+            return root;
+        }
+        else if (search(node1, root.right) && node2onLeft) {
+            return root;
+        }
+
+        TreeNode newSide = node1onLeft ? root.left : root.right;
+        return ancestorHelper(node1, node2, newSide);
+    }
+
 }
 
 
