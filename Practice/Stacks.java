@@ -58,3 +58,34 @@ class FixedMultiStack {
 
 }
 
+public class StackWithMin extends Stack<Integer> {
+    Stack<Integer> s2;
+
+    public StackWithMin() {
+        s2 = new Stack<Integer>();
+    }
+
+    public void push(int value) {
+        if (value <= min()) {
+            s2.push(value);
+        }
+        super.push(value);
+    }
+
+    public int pop() {
+        int val = super.pop();
+        if (val == min()) {
+            s2.pop();
+        }
+        return val;
+    }
+
+    public int min() {
+        if (s2.isEmpty()) {
+            return Integer.MAX_VALUE;
+        }
+        return s2.peek();
+    }
+}
+
+
