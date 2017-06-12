@@ -66,7 +66,7 @@ public class StackWithMin extends Stack<Integer> {
     }
 
     public void push(int value) {
-        if (value <= min()) {
+        if (value <= getMin()) {
             s2.push(value);
         }
         super.push(value);
@@ -74,14 +74,14 @@ public class StackWithMin extends Stack<Integer> {
 
     public int pop() {
         int val = super.pop();
-        if (val == min()) {
+        if (val == getMin()) {
             s2.pop();
         }
         return val;
     }
 
     public int min() {
-        if (s2.isEmpty()) {
+        if (s2.empty()) {
             return Integer.MAX_VALUE;
         }
         return s2.peek();

@@ -1,5 +1,3 @@
-import java.io.*;
-import java.util.*;
 
 // Find first nonrepeated character
 public static Character firstNonrepeat(String str) {
@@ -204,7 +202,7 @@ public static String compress(String str) {
 }
 
 // check if string is rotation of another
-public static String isRotaion(String s1, String s2) {
+public static String isRotation(String s1, String s2) {
 	if (s1.length == s2.length) {
 		return isSubstring(s1, s2+s2);
 	}
