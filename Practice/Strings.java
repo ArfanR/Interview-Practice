@@ -61,9 +61,10 @@ public String reverseWords(String a) {
 		return a;
 	}
 	char[] string = a.toCharArray();
-	reverseString(string, 0, string.length-1);
+	reverseString(string, 0, string.length-1); // reverse entire string of words
 	int start = 0;
 	int end = 0;
+	// reverse each word in place in reversed string
 	while (end < string.length) {
 		if (string[end] != ' ') {
 			start = end;
@@ -82,7 +83,7 @@ public static boolean isUniqueChars(String str) {
 		return false;
 
 	int[] char_set = new int[128];
-
+	// character count of string must be less than 2
 	for(int i = 0; i < str.length(); i++) {
 		int val = (int) str.charAt(i);
 		char_set[val]++;
@@ -99,13 +100,13 @@ public static boolean checkPermutation(String s1, String s2) {
 	if (s1.length() != s2.length()) {
 		return false;
 	}
-
+	// have a character count for first string
 	int[] char_set = new int[128];
 	for (int i = 0; i < s1.length(); i++) {
 		int val = (int) s1.charAt(i);
 		char_set[val]++;
 	}
-
+	// check if characters have same frequency in second string
 	for (int i = 0; i < s2.length(); i++) {
 		int val = (int) s2.charAt(i);
 		char_set[val]--;
@@ -122,12 +123,13 @@ public static boolean checkPermutation(String s1, String s2) {
 // Count white spaces and fill in new char array backward
 public static void replaceSpace(char[] str, int trueLength) {
 	int spaces = 0;
+	// count white spaces to calculate new length
 	for (int i = 0; i < str.length(); i++) {
 		if (str[i] == ' ') {
 			spaces++;
 		}
 	}
-
+	// start at the end of the new array and update based on white spaces
 	int newIndex = trueLength + spaces*2;
 	if (trueLength < str.length()) {
 		str[trueLength] = '\0';
@@ -150,7 +152,7 @@ public static void replaceSpace(char[] str, int trueLength) {
 public static boolean isPermutationofPalindrome(String str) {
 	int countOdd = 0;
 	int[] char_set = new int[Character.getNumericValue('z') - Character.getNumericValue('a') + 1];
-
+	// keep track of odd character counts (less than or equal to one)
 	for (char c : str.toCharArray()) {
 		int val = Character.getNumericValue(c);
 		char_set[val]++;
@@ -181,7 +183,7 @@ public static boolean oneEditInsert(String s1, String s2) {
 	int index1 = 0;
 	int index2 = 0;
 	int edits = 0;
-
+	// keep track of two indices and check for missing char
 	while (index1 < s1.length() && index2 < s2.length()) {
 		if (s1.charAt(index1) != s2.charAt(index2)) {
 			edits++;
@@ -203,7 +205,7 @@ public static boolean oneEditInsert(String s1, String s2) {
 
 public static boolean oneEditReplace(String s1, String s2) {
 	int edits = 0;
-
+	// check for unequal chars
 	for (int i = 0; i < s1.length(); i++) {
 		if (s1.charAt(i) != s2.charAt(i)) {
 			edits++;
@@ -217,7 +219,7 @@ public static boolean oneEditReplace(String s1, String s2) {
 public static String compress(String str) {
 	StringBuilder newString = new StringBuilder();
 	int countRepeats = 0;
-     m
+
 	int i = 0;
 	while (i < str.length()) {
 		countRepeats++;
