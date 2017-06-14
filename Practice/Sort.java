@@ -94,3 +94,28 @@ public static int search(int a[], int left, int right, int x) {
     return -1;
 }
 
+public static search(Listy list, int value) {
+    int size = 1;
+    while (list.elementAt(size) != -1 && list.elementAt(size) < value) {
+        size *= 2;
+    }
+    return binarySearch(list, value, size/2, size);
+}
+
+public static int binarySearch(Listy list, int value, int low, int high) {
+    int mid;
+    while (low <= high) {
+        mid = (low+high)/2;
+        int middle = list.elementAt(mid);
+        if (value < middle || middle == -1) {
+            high = mid-1;
+        }
+        else if (middle < value) {
+            low = mid+1;
+        }
+        else {
+            return mid;
+        }
+    }
+    return -1;
+}
