@@ -44,6 +44,17 @@ public static String removeChars(String str, String remove) {
 
 }
 
+// reverse characters in a string
+public static void reverseString(char[] string, int start, int end) {
+	while (start < end) {
+		char temp = string[start];
+		string[start] = string[end];
+		string[end] = temp;
+		start++;
+		end--;
+	}
+}
+
 // Check if character counts are no more than 1
 public static boolean isUniqueChars(String str) {
 	if (str.length() > 128)
@@ -185,7 +196,7 @@ public static boolean oneEditReplace(String s1, String s2) {
 public static String compress(String str) {
 	StringBuilder newString = new StringBuilder();
 	int countRepeats = 0;
-
+     m
 	int i = 0;
 	while (i < str.length()) {
 		countRepeats++;
@@ -207,8 +218,4 @@ public static String isRotation(String s1, String s2) {
 		return isSubstring(s1, s2+s2);
 	}
 	return false;
-}
-
-public static void main(String[] args) {
-
 }
