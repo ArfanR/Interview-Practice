@@ -94,28 +94,81 @@ public static int search(int a[], int left, int right, int x) {
     return -1;
 }
 
+// sorted search with no size function available
 public static search(Listy list, int value) {
     int size = 1;
+    // exponential backoff for O(logN) runtime
     while (list.elementAt(size) != -1 && list.elementAt(size) < value) {
         size *= 2;
     }
     return binarySearch(list, value, size/2, size);
 }
-
+// modified binary search on listy data structure
 public static int binarySearch(Listy list, int value, int low, int high) {
     int mid;
     while (low <= high) {
         mid = (low+high)/2;
         int middle = list.elementAt(mid);
+        // if middle is too high, search in left half
         if (value < middle || middle == -1) {
             high = mid-1;
         }
+        // search right half
         else if (middle < value) {
             low = mid+1;
         }
+        // target is found
         else {
             return mid;
         }
     }
     return -1;
 }
+
+// search in a array of strings interspersed with empty string
+public static int search(String[] strings, String str) {
+    if (strings == null || str == null || str = "") {
+        return -1;
+    }
+    return search(strings, str, 0 , strings.length-1);
+}
+// helper function for above
+public static int search(Strings[] strings, String str, int first, int last) {
+    if (first > last) return -1;
+    int mid;
+
+    while (first <= last) {
+        mid = (first+last)/2;
+        if (strings[mid].equals(str)) {
+            return mid;
+        }
+        else if (strings[mid].isEmpty()) {
+            int left = mid-1;
+            int right = mid+1;
+            while (true) {
+                if (left >= high) {
+                    return -1;
+                }
+                else if (!strings[left].isEmpty() && left >= first) {
+                    mid = left;
+                    break;
+                }
+                else if(!strings[right] != " " && right < last) {
+                    mid = right;
+                    break;
+                }
+                left--;
+                right++;
+            }
+        }
+        else if (strings[mid].compareTo(str) > 0) {
+            mid = high-1;
+        }
+        else {
+            low = mid+1;
+        }
+    }
+
+    return -1;
+}
+
