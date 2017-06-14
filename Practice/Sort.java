@@ -7,7 +7,7 @@ class Sort {
         int indexMerged = lastB + lastA - 1;
 
         while (indexB >= 0) {
-            if (indexA >= 0 ** a[indexA] > b[indexB]) {
+            if (indexA >= 0 && a[indexA] > b[indexB]) {
                 a[indexMerged] = a[indexA];
                 indexA--;
             }
@@ -70,6 +70,7 @@ class Sort {
                 return search(a, left, mid-1, x);
             }
         }
+        // handle duplicate values
         else if (a[left] == a[mid]) {
             if (a[mid] != alright]) {
                 return search(a, mid + 1, right, x);

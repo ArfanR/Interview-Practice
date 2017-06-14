@@ -233,6 +233,57 @@ public static String compress(String str) {
 	return str.length() > newString.length() ? newString.toString() : str;
 }
 
+// set entire row and column to zero if element is zero
+public static void zeroMatrix(int[][] matrix) {
+	boolean rowHasZero = false;
+	boolean colHazZero = false;
+
+	// check if first row has a zero
+	for (int i = 0; i < matrix[0].length; i++) {
+		if (matrix[0][i] == 0) {
+			rowHasZero = true;
+			break;
+		}
+	}
+	// check if first column has a zero
+	for (int i = 0; i < matrix.length; i++) {
+		if (matrix[i][0] == 0) {
+			colHasZero = true;
+			break;
+		}
+	}
+	// check for zeros in the rest of the array
+	for (int i = 1; i < matrix.length; i++) {
+		for (int j = 1; j < matrix[0].length; j++) {
+			if (matrix[i][j] == 0) {
+				matrix[i][0] = 0;;
+				matrix[0][j] = 0;
+			}
+		}
+	}
+	// nullify rows based on values in first column
+	for (int i = 1; i < matrix.length; i++) {
+		if (matrix[i][0] == 0) {
+			nullifyRow(matrix, i);
+		}
+	}
+	// nullify columns based on values in first row
+	for (int j = 1; j < matrix[0].length; j++) {
+		if (matrix[0][j]) == 0) {
+			nullifyColumn(matrix, j);
+		}
+	}
+
+	if (rowHasZero) {
+		nullifyRow(matrix, 0);
+	}
+
+	if (colHasZero) {
+		nullifyCol(matrix, 0);
+	}
+
+}
+
 // check if string is rotation of another
 public static String isRotation(String s1, String s2) {
 	if (s1.length == s2.length) {
