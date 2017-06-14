@@ -55,6 +55,27 @@ public static void reverseString(char[] string, int start, int end) {
 	}
 }
 
+// reverse a string word by word
+public String reverseWords(String a) {
+	if (a.length() == 0) {
+		return a;
+	}
+	char[] string = a.toCharArray();
+	reverseString(string, 0, string.length-1);
+	int start = 0;
+	int end = 0;
+	while (end < string.length) {
+		if (string[end] != ' ') {
+			start = end;
+			while (end < string.length && string[end] != ' ') {
+				end++;
+			}
+			end--;
+			reverseString(string, start, end);
+		}
+	}
+}
+
 // Check if character counts are no more than 1
 public static boolean isUniqueChars(String str) {
 	if (str.length() > 128)
