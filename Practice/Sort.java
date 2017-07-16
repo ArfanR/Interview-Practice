@@ -106,6 +106,7 @@ public static search(Listy list, int value) {
 // modified binary search on listy data structure
 public static int binarySearch(Listy list, int value, int low, int high) {
     int mid;
+    // iterate starting at the middle
     while (low <= high) {
         mid = (low+high)/2;
         int middle = list.elementAt(mid);
@@ -135,16 +136,19 @@ public static int search(String[] strings, String str) {
 // helper function for above
 public static int search(Strings[] strings, String str, int first, int last) {
     if (first > last) return -1;
-    int mid;
 
+    int mid;
     while (first <= last) {
         mid = (first+last)/2;
+        // target found
         if (strings[mid].equals(str)) {
             return mid;
         }
+        // found empty string
         else if (strings[mid].isEmpty()) {
             int left = mid-1;
             int right = mid+1;
+            // track both left and right positions to find nonempty string
             while (true) {
                 if (left >= high) {
                     return -1;
@@ -171,4 +175,11 @@ public static int search(Strings[] strings, String str, int first, int last) {
 
     return -1;
 }
+
+// sorted matrix search
+
+
+
+
+
 

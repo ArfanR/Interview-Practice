@@ -39,20 +39,23 @@ public class LList {
 
 	// Use hash set to check for duplicates
 	public static LinkedListNode deleteDups(LinkedListNode n) {
-		HashSet<Object> set = new HashSet<Object>();
-		LinkedListNode previous = null;
-		while (n != null) {
-			if (set.contains(n.data)) {
-				previous.next = n.next;
-			}
-			else {
-				set.add(n.data);
-				previous = n;
-			}
-			n = n.next;
-		}
+		if (n == null) return null;
 
-		return previous;
+	    LinkedListNode temp = n;
+	    LinkedListNode next;
+
+	    while (temp.next != null) {
+	        if (temp.val == temp.next.val) {
+	            next = temp.next.next;
+	            temp.next = null;
+	            temp.next = next;
+	        }
+	        else {
+	            temp = temp.next;
+	        }
+	    }
+
+	    return n;
 	}
 
 	// Recursive solution for kth to last
