@@ -85,4 +85,21 @@ public class MyVector {
         return index;;
     }
 
+    public void push(int value) {
+        resize(size+1);
+        data[size] = value;
+        size++;
+    }
+
+    public int pop() {
+        if (size == 0) {
+            return -1;
+        }
+
+        resize(size-1);
+        int val = data[size-1];
+        size--;
+        return val;
+    }
+
 }
