@@ -99,7 +99,37 @@ public class MyVector {
         resize(size-1);
         int val = data[size-1];
         size--;
+
         return val;
     }
 
+    public void insert(int value, int index) {
+        if (index < 0 || index >= size) {
+            System.out.println("Out of bounds");
+        }
+
+        resize(size+1);
+        for (int i = size; i > index; i--) {
+            data[i] = data[i-1];
+        }
+
+        data[index] = value;
+        size++;
+    }
+
+    public void delete(int index) {
+        if (index < 0 || index >= size) {
+            System.out.println("Out of bounds");
+        }
+
+        resize(size-1);
+        for (int i = index; i < size-1; i++) {
+            data[i] = data[i+1];
+        }
+
+        size--;
+    }
+
+
 }
+
