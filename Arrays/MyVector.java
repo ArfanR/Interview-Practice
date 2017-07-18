@@ -65,4 +65,24 @@ public class MyVector {
         capacity = newCapacity;
     }
 
+    public int getValueAt(int index) {
+        if (index < 0 || index >= size) {
+            return -1;
+        }
+        return data[index];
+    }
+
+    public int findValue(int value) {
+        int index = -1;
+
+        for (int i = 0; i < size; i++) {
+            if (data[i] == value) {
+                index = i;
+                break;
+            }
+        }
+
+        return index;;
+    }
+
 }
