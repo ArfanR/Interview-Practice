@@ -95,4 +95,37 @@ public class LinkedList {
         return node.data;
     }
 
+    public void insert(int index, T value) {
+        if (index < 0 || index >= size()) {
+            System.out.println("Invalid index");
+        }
+
+        ListElement<T> node = new ListElement<T>(value);
+        node.setNext(null);
+
+        if (head == null) {
+            head = node;
+        }
+
+        int i = 0;
+        ListElement<T> prev = null;
+        ListElement<T> curr = head;
+        while (curr) {
+            if (i == index-1) {
+                break;
+            }
+            prev = curr;
+            curr = curr.next;
+            i++;
+        }
+
+        node.setNext(curr);
+        prev.setNext(node);
+    }
+
+
+    public T erase(int index) {
+
+    }
+
 }
