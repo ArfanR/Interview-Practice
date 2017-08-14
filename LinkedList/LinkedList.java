@@ -22,7 +22,7 @@ public class LinkedList {
     }
 
     public T value_at(int index) {
-        if (index < 0 || index > size()) {
+        if (index < 0 || index >= size()) {
             System.out.println("Invalid index");
         }
 
@@ -39,8 +39,11 @@ public class LinkedList {
         return temp.data;
     }
 
-    public void push_front(value) {
+    public void push_front(T value) {
+        ListElement<T> node = new ListElement<T>(value);
 
+        node.setNext(head);
+        head = node;
     }
 
     public T pop_front() {
@@ -54,7 +57,20 @@ public class LinkedList {
     }
 
     public void push_back(int value) {
+        ListElement<T> node = new ListElement<T>(value);
+        node.setNext(null);
 
+        ListElement<T> temp = head;
+        if (head == null) {
+            head = node;
+        }
+
+        while (temp) {
+            if (temp.next == null) {
+                temp.setNext(node);
+            }
+            temp = temp.next;
+        }
     }
 
     public T pop_back() {
@@ -74,6 +90,7 @@ public class LinkedList {
                 node = temp.next;
                 temp.setNext(null);
             }
+            temp = temp.next;
         }
         return node.data;
     }
