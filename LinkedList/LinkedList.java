@@ -104,7 +104,7 @@ public class LinkedList {
         int i = 0;
         ListElement<T> prev = null;
         ListElement<T> curr = head;
-        while (curr && i < index) {
+        while (curr.next != null && i < index) {
             prev = curr;
             curr = curr.next;
             i++;
@@ -115,30 +115,47 @@ public class LinkedList {
     }
 
 
-    public T erase(int index) {
+    public void erase(int index) {
         if (index < 0 || index >= size()) {
             System.out.println("Invalid index");
         }
         if (head == null) {
             System.out.println("Empty list");
-            return null;
+        }
+        if (head.next == null) {
+            head = null;
         }
 
         int i = 0;
         ListElement<T> prev = null;
         ListElement<T> curr = head;
-        while (curr && i < index) {
+        while (curr.next != null && i < index) {
             prev = curr;
             curr = curr.next;
             i++;
         }
-        if (prev == null) {
-            head = curr.getNext();
+        prev.setNext(curr.getNext());
+    }
+
+    public ListElement<T> removeValue(T value) {
+        if (head == null) {
+            System.out.println("List is empty");
         }
-        else {
-            prev.setNext(curr.getNext());
+        ListElement<T> temp = head;
+
+        if (temp.getValue() == value) {
+            return head.next;
         }
 
+        while (temp.next != null) {
+            if (temp.next.getValue() == value) {
+                temp.next = temp.next.next;
+                return head;
+            }
+            temp = temp.next;
+        }
+        return head;
     }
+
 
 }
