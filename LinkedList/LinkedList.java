@@ -10,7 +10,7 @@ public class LinkedList {
     public int size() {
         int size = 0;
         ListElement<T> temp = head;
-        while (temp) {
+        while (temp.next != null) {
             temp = temp.next;
             size++;
         }
@@ -28,10 +28,7 @@ public class LinkedList {
 
         int i = 0;
         ListElement<T> temp = head;
-        while (temp) {
-            if (i == index) {
-                break;
-            }
+        while (temp.next != null && i < index) {
             temp = temp.next;
             i++;
         }
@@ -53,7 +50,7 @@ public class LinkedList {
         }
         ListElement<T> temp = head;
         head = head.next;
-        return temp.data;
+        return temp.getValue();
     }
 
     public void push_back(int value) {
@@ -65,12 +62,10 @@ public class LinkedList {
             head = node;
         }
 
-        while (temp) {
-            if (temp.next == null) {
-                temp.setNext(node);
-            }
+        while (temp.next != null) {
             temp = temp.next;
         }
+        temp.setNext(node);
     }
 
     public T pop_back() {
@@ -85,14 +80,13 @@ public class LinkedList {
         }
 
         ListElement<T> temp = head;
-        while (temp) {
-            if (temp.next.next == null) {
-                node = temp.next;
-                temp.setNext(null);
-            }
+        while (temp.next.next != null) {
             temp = temp.next;
         }
-        return node.data;
+        node = temp.next;
+        temp.setNext(null);
+
+        return node.getValue();
     }
 
     public void insert(int index, T value) {
@@ -110,10 +104,7 @@ public class LinkedList {
         int i = 0;
         ListElement<T> prev = null;
         ListElement<T> curr = head;
-        while (curr) {
-            if (i == index-1) {
-                break;
-            }
+        while (curr && i < index) {
             prev = curr;
             curr = curr.next;
             i++;
@@ -125,6 +116,28 @@ public class LinkedList {
 
 
     public T erase(int index) {
+        if (index < 0 || index >= size()) {
+            System.out.println("Invalid index");
+        }
+        if (head == null) {
+            System.out.println("Empty list");
+            return null;
+        }
+
+        int i = 0;
+        ListElement<T> prev = null;
+        ListElement<T> curr = head;
+        while (curr && i < index) {
+            prev = curr;
+            curr = curr.next;
+            i++;
+        }
+        if (prev == null) {
+            head = curr.getNext();
+        }
+        else {
+            prev.setNext(curr.getNext());
+        }
 
     }
 

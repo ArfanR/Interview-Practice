@@ -8,10 +8,10 @@ public class ListElement<T> {
     public ListElement(T value) {
         data = value;
     }
-    public ListElement<T> next() {
+    public ListElement<T> getNext() {
         return next;
     }
-    public T value() {
+    public T getValue() {
         return data;
     }
     public void setNext(ListElement<T> elem) {
