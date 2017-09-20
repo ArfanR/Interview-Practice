@@ -41,5 +41,36 @@ public class BST {
         }
     }
 
+    public int getHeight(BST node) {
+        if (node == null) {
+            return 0;
+        }
+        return 1 + Math.max(getHeight(node.left), GetHeight(node.right));
+    }
+
+    public int getMin(BST node) {
+        if (node == null) {
+            return -1;
+        }
+        if (node.left == null) {
+            return node.data;
+        }
+        return getMin(node.left);
+    }
+
+    public int getMax(BST node) {
+        if (node == null) {
+            return -1;
+        }
+        if (node.right == null) {
+            return node.data;
+        }
+        return getMax(node.right);
+    }
+
+
 
 }
+
+
+
