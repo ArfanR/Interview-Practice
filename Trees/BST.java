@@ -68,7 +68,24 @@ public class BST {
         return getMax(node.right);
     }
 
+    public void printBFS(BST node) {
+        Deque<Integer> queue = new ArrayDeque<>();
+        BST current;
+        queue.addLast(node);
 
+        while (!queue.isEmpty()) {
+            current = queue.removeFirst();
+            if (current != null) {
+                System.out.println(current.data + " ");
+                if (current.left != null) {
+                    queue.addLast(current.left);
+                }
+                if (current.right != null) {
+                    queue.addLast(current.right);
+                }
+            }
+        }
+    }
 
 }
 
