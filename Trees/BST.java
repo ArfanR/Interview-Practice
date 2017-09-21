@@ -87,6 +87,20 @@ public class BST {
         }
     }
 
+    public boolean isBST(BST node) {
+        return isBetween(node, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    private boolean isBetween(BST node, int min, int max) {
+        if (node == null) {
+            return true;
+        }
+        else if (node.data < min || node.data > max) {
+            return false;
+        }
+        return isBetween(node.left, min, node.data) && isBetween(node.right, node.data, max);
+    }
+
 }
 
 
